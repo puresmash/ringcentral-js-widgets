@@ -15,7 +15,6 @@ export default class operateWebPhoneBasic {
     const { accounts } = context.options.option;
     const loginAccount = accounts[0];
     const receiverAccount = accounts[1];
-    
     const dailer = await this.getPhone(loginAccount);
     const receiver = await this.getPhone(receiverAccount);
     context.options.option.webphones = [dailer, receiver];

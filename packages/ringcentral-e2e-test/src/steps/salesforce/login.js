@@ -28,8 +28,8 @@ export default class Login {
       app.props().phone.auth.login({ username: did, password });
     } else {
       // // shortcut for speed up
-      // await $(app).execute(`phone.auth.login({username: '${did}', password: '${password}'})`);
-      await Login.trueLogin({ did, password }, app, page);
+      await $(app).execute(`phone.auth.login({username: '${did}', password: '${password}'})`);
+      // await Login.trueLogin({ did, password }, app, page);
     }
     // await $(app).waitFor(50000);
     // await $(app).waitForSelector('[class*=-SettingsPanel-_styles_root] div  a:nth-child(1) [class*=IconField-_styles_content]', { selector: 'css', visible: true });

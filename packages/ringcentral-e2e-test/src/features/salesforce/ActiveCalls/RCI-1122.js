@@ -59,9 +59,11 @@ describe('Test Demo: =====>', () => {
     expect(ringing.trim()).toBe('Ringing');
     // await $(app).click('[class*=SaveLogButton-_styles_primaryButton]');
     await process.execTo(AnswerCall);
-    await $(app).waitFor(5000);
-    await $(app).waitForSelector('[class*=LogSection-_styles_callCtrlWrapper] [class*=SmCallControl-_styles_button]', { selector: 'css', visible: true });
-    await $(app).getText('[class*=LogSection-_styles_callCtrlWrapper] svg[class*=SmCallControl-_styles_button]', { selector: 'css' });
+    await $(app).waitFor(100000);
+    await $(app).waitForSelector('[class*=LogSection-_styles_callCtrlWrapper] [class*=SmCallControl-_styles_button] > title', { visible: true });
+    // Title of mute-button
+    const text = await $(app).html('svg[class*=SmCallControl-_styles_button] > title');
+    expect(text).toBe('Mute');
     const connected = await $(app).getText('[class*=LogBasicInfo-_styles_green]', { selector: 'css' });
     await console.log(connected);
     await $(app).click('[class*=LogSection-_styles_callCtrlWrapper] svg[class*=SmCallControl-_styles_button]', { selector: 'css' });
